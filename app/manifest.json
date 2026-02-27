@@ -1,0 +1,129 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+    "id": "warehouse.order.app",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/WarehouseOrderExt/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "intent1": {
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "WarehouseOrder",
+          "action": "display",
+          "title": "Warehouse Orders",
+          "subTitle": "View and manage warehouse orders",
+          "icon": "sap-icon://warehouse"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.108.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "warehouse.order.app.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "useBatch": false,
+          "synchronizationMode": "None",
+          "operationMode": "Server"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "warehouse.order.app.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearTarget": false
+      },
+      "routes": [
+        {
+          "name": "WarehouseOrdersList",
+          "pattern": ":?query:",
+          "target": [
+            "WarehouseOrdersList"
+          ]
+        },
+        {
+          "name": "WarehouseOrderObjectPage",
+          "pattern": "WarehouseOrder({key}):?query:",
+          "target": [
+            "WarehouseOrderObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "WarehouseOrdersList": {
+          "viewId": "WarehouseOrdersList",
+          "viewName": "WarehouseOrdersList",
+          "viewLevel": 1
+        },
+        "WarehouseOrderObjectPage": {
+          "viewId": "WarehouseOrderObjectPage",
+          "viewName": "WarehouseOrderObjectPage",
+          "viewLevel": 2
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archivingEnabled": false
+  }
+}

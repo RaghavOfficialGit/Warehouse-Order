@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app xmlns="http://www.sap.com/sapui5/extensions/sap.ui.core.CustomData/1">
+    <application>
+        <applicationVersion>1.0.0</applicationVersion>
+        <title>Warehouse Order Management</title>
+        <description>Warehouse Order Management Application with External API Integration</description>
+        <resources xmlns="http://www.sap.com/sapui5/extensions/sap.ui.core.CustomData/1">
+            <css path="css/style.css"/>
+        </resources>
+    </application>
+    
+    <cloudFoundry>
+        <targets>
+            <target>
+                <type>html5</type>
+                <name>webapp</name>
+                <configuration>
+                    <property-key>destinations</property-key>
+                    <property-value>[{"name":"srv-api","url":""}]</property-value>
+                </configuration>
+            </target>
+        </targets>
+    </cloudFoundry>
+    
+    <destinations>
+        <destination name="srv-api" defaultUrl="true">
+            <property name="type" value="HTTP"/>
+            <property name="URL" value=""/>
+            <property name="forwardAuthToken" value="true"/>
+        </destination>
+    </destinations>
+</app>

@@ -1,0 +1,39 @@
+{
+  "name": "warehouse-order-service",
+  "version": "1.0.0",
+  "description": "CAP service for Warehouse Order with external API integration",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^2",
+    "eslint": "^8"
+  },
+  "scripts": {
+    "start": "cds run",
+    "watch": "cds watch",
+    "build": "cds build/all --production",
+    "deploy": "cf deploy mta_archives/warehouse-order_1.0.0.mtar"
+  },
+  "cds": {
+    "requires": {
+      "API_HUB": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_HUB",
+        "credentials": {
+          "destination": "API_HUB"
+        }
+      }
+    }
+  },
+  "sap-cloud-sdk": {
+    "version": "3"
+  }
+}

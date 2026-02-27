@@ -1,0 +1,28 @@
+{
+  "build": {
+    "target": ".gen"
+  },
+  "requires": {
+    "db": {
+      "kind": "sql"
+    },
+    "API_HUB": {
+      "kind": "odata-v2",
+      "model": "srv/external/API_HUB",
+      "credentials": {
+        "destination": "API_HUB",
+        "requestTimeout": 30000
+      }
+    }
+  },
+  "odata": {
+    "version": "v4"
+  },
+  "server": {
+    "services": {
+      "WarehouseOrderExt": {
+        "model": "srv/warehouse-order-service"
+      }
+    }
+  }
+}
